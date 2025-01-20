@@ -17,11 +17,11 @@ class DbConnectionHandler:
             )
             self.__engine = self.__create_database_engine()    
         except OperationalError as ex:
-             print(f"Erro ao conectar ao banco de dados: {ex}")
+            print(f"Erro ao conectar ao banco de dados: {ex}")
              
     def __create_database_engine(self):
-            engine = create_engine(self.__connection_string)
-            return engine
+        engine = create_engine(self.__connection_string)
+        return engine
         
     def get_engine(self):
         return self.__engine

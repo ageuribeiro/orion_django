@@ -7,16 +7,3 @@ def minha_funcao():
 def essa_e_minha_funcao():
     '''Descricao de funcao'''
     print('Ola')
-
-
-
-
-
-
-
-
-
-
-
-
-x = 123

@@ -1,7 +1,7 @@
 repos:
-    repos: local
+  - repo: local
     hooks:
-        id: pylint
+      - id: pylint
         name: pylint
         entry: pylint
         language: system
@@ -13,3 +13,14 @@ repos:
               "--rcfile=.pylintrc",
               "--load-plugins=pylint.extensions.docparams",
             ]
+            
+  - repo: local
+    hooks:
+    - id: requirements
+      name: requirements
+      entry: bash -c 'pip freeze > requirements.txt; git add requirements.txt'
+      language: system
+      pass_filenames: false
+      stages: [commit]
+
+      

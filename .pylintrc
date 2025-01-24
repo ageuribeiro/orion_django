@@ -2,9 +2,12 @@
 
 disable = 
     C0116,
+    C0411,
     E0015,
     C0114,
     W0703,
+    W1309,
+    W0611,
     C0209,
     C0321,
     W0221,
@@ -14,7 +17,8 @@ disable =
     C0301,
     C0303,
     C0304,
-    R0903
+    R0903,
+    I1101,
 
 analyse-fallback-blocks=no
 clear-cache-post-run=no

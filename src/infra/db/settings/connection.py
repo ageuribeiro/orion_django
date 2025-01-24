@@ -1,28 +1,30 @@
-from sqlalchemy import create_engine
-from sqlalchemy.exc import OperationalError
-class DbConnectionHandler:
-    
-    def __init__(self) -> None:
-        try:
-            user = 'ageuribeiro'
-            password = 'ageuribeiro'
-            host = 'LOQ15IRH8\agl_r' #LOQ15IRH8
-            port = '1433'
-            database = 'clean_database'
-            driver = 'ODBC Driver 17 for SQL Server'
+import mysql.connector as mysql_connector
+from dotenv import load_dotenv
+import os
 
-            self.__connection_string = (
-                f"mssql+pyodbc://{user}:{password}@{host}:{port}/{database}?"
-                f"driver={driver.replace(' ', '+')}"
-            )
-            self.__engine = self.__create_database_engine()    
-        except OperationalError as ex:
-            print(f"Erro ao conectar ao banco de dados: {ex}")
+
+load_dotenv()
+
+class MySQLDatabase:
+    
+    def __init__(self):
+        self._host = os.getenv("HOST")
+        self._username = os.getenv("USERNAME")
+        self._passwd = os.getenv("PASSWD")
+        self._database = os.getenv("DATABASE")
+        self._conn = self._connecting()
+
+    def _connecting(self):
+        return mysql_connector.connect(
+            user = self._username,
+            password = self._passwd,
+            host = self._host,
+            datbase = self._database
+        )
+
+def querying(self, query):
+    if not self.conn.is_connected():
+        self._connect()
+
              
-    def __create_database_engine(self):
-        engine = create_engine(self.__connection_string)
-        
-        return engine
-        
-    def get_engine(self):
-        return self.__engine
+    
